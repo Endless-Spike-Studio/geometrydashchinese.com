@@ -101,7 +101,7 @@ function showJoinGroupDialog(id: number, key: string) {
           <n-image :img-props="{ class: 'w-full' }" :src="Banner" class="lg:w-1/2"/>
         </div>
 
-        <n-alert class="lg:w-1/3 mb-5 mx-auto" closable type="info">
+        <n-alert class="lg:w-1/3 mb-5 mx-auto" type="info">
           如你所见, 欢迎来到崭新的
           <n-button href="/" tag="a" text type="primary">几何冲刺玩家网</n-button>
           !
