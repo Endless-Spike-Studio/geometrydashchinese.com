@@ -22,6 +22,8 @@ import {
   NText,
   useOsTheme
 } from "naive-ui";
+import Logo from "../public/logo.png";
+import Banner from "../public/banner.png";
 
 const theme = computed(() => {
   return useOsTheme().value === 'dark' ? darkTheme : lightTheme;
@@ -32,7 +34,7 @@ const menuOptions = [
     label: '几何冲刺玩家网',
     key: 'home',
     icon: () => h(NImage, {
-      src: '/public/logo.png',
+      src: Logo,
       width: 20
     }),
     url: '/'
@@ -96,7 +98,7 @@ function showJoinGroupDialog(id: number, key: string) {
 
       <n-layout-content class="p-[24px] pb-20">
         <div class="mx-auto w-full mb-2.5 text-center">
-          <n-image :img-props="{ class: 'w-full' }" class="lg:w-1/2" src="/public/banner.png"/>
+          <n-image :img-props="{ class: 'w-full' }" class="lg:w-1/2" :src="Banner"/>
         </div>
 
         <n-alert class="lg:w-1/3 mb-5 mx-auto" closable type="info">
