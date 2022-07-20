@@ -98,7 +98,7 @@ function showJoinGroupDialog(id: number, key: string) {
 
       <n-layout-content class="p-[24px] pb-20">
         <div class="mx-auto w-full mb-2.5 text-center">
-          <n-image :img-props="{ class: 'w-full' }" class="lg:w-1/2" :src="Banner"/>
+          <n-image :img-props="{ class: 'w-full' }" :src="Banner" class="lg:w-1/2"/>
         </div>
 
         <n-alert class="lg:w-1/3 mb-5 mx-auto" closable type="info">
@@ -112,7 +112,7 @@ function showJoinGroupDialog(id: number, key: string) {
 
           <n-space vertical>
             <n-card>
-              <n-space :vertical="isMobile" justify="center">
+              <n-space :vertical="isMobile" class="mx-auto text-center" justify="center">
                 <n-button href="https://robtopgames.com" tag="a">Robtop Games</n-button>
                 <n-button href="https://pointercrate.com" tag="a">PointerCrate</n-button>
                 <n-button href="https://newgrounds.com" tag="a">NewGrounds</n-button>
