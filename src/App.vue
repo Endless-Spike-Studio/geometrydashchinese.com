@@ -112,7 +112,7 @@ function showJoinGroupDialog(id: number, key: string) {
 
           <n-space vertical>
             <n-card>
-              <n-space justify="center">
+              <n-space :vertical="isMobile" justify="center">
                 <n-button href="https://robtopgames.com" tag="a">Robtop Games</n-button>
                 <n-button href="https://pointercrate.com" tag="a">PointerCrate</n-button>
                 <n-button href="https://newgrounds.com" tag="a">NewGrounds</n-button>
