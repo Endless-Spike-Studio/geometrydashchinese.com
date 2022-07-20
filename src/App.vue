@@ -20,6 +20,7 @@ import {
   NMenu,
   NSpace,
   NText,
+  NThing,
   useOsTheme
 } from "naive-ui";
 import Logo from "../public/logo.png";
@@ -112,26 +113,39 @@ function showJoinGroupDialog(id: number, key: string) {
 
           <n-space vertical>
             <n-card>
-              <n-space :vertical="isMobile" class="mx-auto text-center" justify="center">
-                <n-button href="https://robtopgames.com" tag="a">Robtop Games</n-button>
-                <n-button href="https://pointercrate.com" tag="a">PointerCrate</n-button>
-                <n-button href="https://newgrounds.com" tag="a">NewGrounds</n-button>
+              <n-space :justify="(isMobile ? 'space-evenly' : 'center')" class="mx-auto text-center">
+                <n-button class="w-[8em]" href="https://robtopgames.com" tag="a">Robtop Games</n-button>
+                <n-button class="w-[8em]" href="https://pointercrate.com" tag="a">PointerCrate</n-button>
+                <n-button class="w-[8em]" href="https://newgrounds.com" tag="a">Newgrounds</n-button>
 
-                <n-button href="https://www.boomlings.com/database/accounts/accountManagement.php" tag="a">
+                <n-button class="w-[8em]" href="https://www.boomlings.com/database/accounts/accountManagement.php"
+                          tag="a">
                   官服账号管理
                 </n-button>
 
                 <n-divider v-if="!isMobile" vertical/>
 
                 <n-button href="https://nsc.geometrydashchinese.com" tag="a">
-                  NewGrounds Song Collection
+                  Newgrounds Song Collection
                 </n-button>
               </n-space>
             </n-card>
 
             <n-grid :x-gap="10" :y-gap="10" cols="1 768:2">
               <n-grid-item>
-                <n-card title="Geometry Dash Chinese (GDCN)">
+                <n-card>
+                  <template #header>
+                    <n-thing>
+                      <template #header>
+                        Geometry Dash Proxy
+                      </template>
+
+                      <template #description>
+                        <n-text>GDProxy</n-text>
+                      </template>
+                    </n-thing>
+                  </template>
+
                   <template #header-extra>
                     <n-button href="https://qm.qq.com/cgi-bin/qm/qr?k=l5AT2gbxhx1uXDV8u1HC_XT9LCIGseLz" tag="a"
                               text type="primary">
@@ -144,7 +158,19 @@ function showJoinGroupDialog(id: number, key: string) {
                 </n-card>
               </n-grid-item>
               <n-grid-item>
-                <n-card title="Geometry Dash Chinese Server (GDCS)">
+                <n-card>
+                  <template #header>
+                    <n-thing>
+                      <template #header>
+                        Geometry Dash Chinese Server
+                      </template>
+
+                      <template #description>
+                        <n-text>GDCS</n-text>
+                      </template>
+                    </n-thing>
+                  </template>
+
                   <template #header-extra>
                     <n-button href="https://gf.geometrydashchinese.com" tag="a" text type="primary">查看</n-button>
                   </template>
@@ -152,38 +178,63 @@ function showJoinGroupDialog(id: number, key: string) {
                   <n-text type="info">
                     GDCS 是一个由
                     <n-button href="https://github.com/WOSHIZHAZHA120" tag="a" text type="primary">渣渣120</n-button>
-                    独立开发的开源私服系统
+                    独立开发的私服
 
                     <br>
 
                     仓库地址:
                     <n-button href="https://github.com/Geometry-Dash-Chinese/Geometry-Dash-Chinese" tag="a" text
-                              type="primary">Geometry-Dash-Chinese/Geometry-Dash-Chinese
+                              type="primary">
+                      Github
                     </n-button>
                   </n-text>
                 </n-card>
               </n-grid-item>
               <n-grid-item>
-                <n-card title="Geometry Dash Proxy (GDProxy)">
+                <n-card>
+                  <template #header>
+                    <n-thing>
+                      <template #header>
+                        Geometry Dash Proxy
+                      </template>
+
+                      <template #description>
+                        <n-text>GDProxy</n-text>
+                      </template>
+                    </n-thing>
+                  </template>
+
                   <template #header-extra>
                     <n-button href="https://dl.geometrydashchinese.com" tag="a" text type="primary">查看</n-button>
                   </template>
 
                   <n-text type="info">
-                    GDProxy 是一个官服加速器, 可以加速
+                    GDProxy 是一个加速器, 可以加速
                     <n-text depth="3">(或减速?)</n-text>
-                    您链接官服的速度
+                    您链接服务器的速度
                   </n-text>
                 </n-card>
               </n-grid-item>
               <n-grid-item>
-                <n-card title="Newgrounds Proxy (NGProxy)">
+                <n-card>
+                  <template #header>
+                    <n-thing>
+                      <template #header>
+                        Newgrounds Proxy
+                      </template>
+
+                      <template #description>
+                        <n-text>NGProxy</n-text>
+                      </template>
+                    </n-thing>
+                  </template>
+
                   <template #header-extra>
                     <n-button href="https://ng.geometrydashchinese.com" tag="a" text type="primary">查看</n-button>
                   </template>
 
                   <n-text type="info">
-                    NGProxy 是一个下歌加速服务, 可以加速
+                    NGProxy 也是一个加速器, 可以加速
                     <n-text depth="3">(或减速?)</n-text>
                     您下载歌曲的速度
                   </n-text>
