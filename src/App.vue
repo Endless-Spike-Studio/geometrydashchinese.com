@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import {computed, h, ref} from "vue";
 import {createDiscreteApi, darkTheme, lightTheme, MenuOption, NButton, NImage, useOsTheme} from "naive-ui";
-import Logo from "../public/logo.png";
-import Banner from "../public/banner.png";
+import Logo from "./resources/images/logo.png";
+import Banner from "./resources/images/banner.png";
 
 const systemTheme = useOsTheme();
 const theme = computed(() => {
