@@ -1,28 +1,6 @@
 <script lang="ts" setup>
 import {computed, h, ref} from "vue";
-import {
-  createDiscreteApi,
-  darkTheme,
-  lightTheme,
-  MenuOption,
-  NAlert,
-  NButton,
-  NCard,
-  NConfigProvider,
-  NDivider,
-  NGrid,
-  NGridItem,
-  NImage,
-  NLayout,
-  NLayoutContent,
-  NLayoutFooter,
-  NLayoutHeader,
-  NMenu,
-  NSpace,
-  NText,
-  NThing,
-  useOsTheme
-} from "naive-ui";
+import {createDiscreteApi, darkTheme, lightTheme, MenuOption, NButton, NImage, useOsTheme} from "naive-ui";
 import Logo from "../public/logo.png";
 import Banner from "../public/banner.png";
 
