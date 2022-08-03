@@ -26,8 +26,9 @@ import {
 import Logo from "../public/logo.png";
 import Banner from "../public/banner.png";
 
+const systemTheme = useOsTheme();
 const theme = computed(() => {
-  return useOsTheme().value === 'dark' ? darkTheme : lightTheme;
+  return systemTheme.value === 'dark' ? darkTheme : lightTheme;
 });
 
 const menuOptions = [
