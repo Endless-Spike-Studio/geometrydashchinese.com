@@ -1,18 +1,33 @@
-name: Deploy
+name: CD
 on: push
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    container:
-      image: node:alpine
+    name: Build and deploy
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [latest]
+
+    runs-on: ${{ matrix.os }}
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@master
 
-      - name: Install pnpm
-        run: npm install --global pnpm
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.25.1
 
-      - name: Install packages
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
         run: pnpm install
 
       - name: Build
