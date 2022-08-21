@@ -26,13 +26,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
-      - name: Deploy to oss
+      - name: Install oss utils
         uses: yizhoumo/setup-ossutil@v1
         with:
           endpoint: ${{ secrets.OSS_GDCN_ENDPOINT }}
           access-key-id: ${{ secrets.OSS_GDCN_ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.OSS_GDCN_ACCESS_KEY_SECRET }}
       
-      - run: |
+      - name: Deploy to oss
+        run: |
           ossutil rm -r oss://gdcn/static/gdpw
           ossutil cp -r ./dist oss://gdcn/static/gdpw
