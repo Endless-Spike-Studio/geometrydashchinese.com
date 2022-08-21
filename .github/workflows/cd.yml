@@ -1,46 +1,39 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
+name: Deploy
+on: push
 
 jobs:
-  cd:
-    name: Build and deploy
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [16]
-
-    runs-on: ${{ matrix.os }}
-
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: node:alpine
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
+      - uses: actions/checkout@v3
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 6.25.1
+      - name: Install pnpm
+        run: npm install --global pnpm
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install packages
+        run: |
+          rm -f pnpm-lock.yaml
+          pnpm update
 
       - name: Build
         env:
           VITE_BASE_PUBLIC_PATH: ${{ secrets.VITE_BASE_PUBLIC_PATH }}
         run: pnpm run build
 
-      - name: Deploy
+      - name: Deploy to github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+      - name: Deploy to oss
+      - uses: yizhoumo/setup-ossutil@v1
+        with:
+          endpoint: ${{ secrets.OSS_GDCN_ENDPOINT }}
+          access-key-id: ${{ secrets.OSS_GDCN_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.OSS_GDCN_ACCESS_KEY_SECRET }}
+      - run: |
+          ossutil rm -r oss://gdcn/static/gdpw
+          ossutil cp -r ./dist oss://gdcn/static/gdpw
