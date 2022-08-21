@@ -50,5 +50,5 @@ jobs:
       
       - name: Deploy to oss
         run: |
-          ossutil rm -r oss://gdcn/static/gdpw
-          ossutil cp -r ./dist oss://gdcn/static/gdpw
+          ossutil rm -rf oss://gdcn/static/gdpw
+          ossutil cp -rf ./dist oss://gdcn/static/gdpw
