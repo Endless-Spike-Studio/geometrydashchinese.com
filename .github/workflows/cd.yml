@@ -13,9 +13,7 @@ jobs:
         run: npm install --global pnpm
 
       - name: Install packages
-        run: |
-          rm -f pnpm-lock.yaml
-          pnpm update
+        run: pnpm install
 
       - name: Build
         env:
@@ -34,6 +32,7 @@ jobs:
           endpoint: ${{ secrets.OSS_GDCN_ENDPOINT }}
           access-key-id: ${{ secrets.OSS_GDCN_ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.OSS_GDCN_ACCESS_KEY_SECRET }}
-        run: |
+      
+      - run: |
           ossutil rm -r oss://gdcn/static/gdpw
           ossutil cp -r ./dist oss://gdcn/static/gdpw
