@@ -36,7 +36,7 @@ window.addEventListener('resize', () => {
 
 checkMobile();
 
-function showJoinGroupDialog(id: number, key: string) {
+async function showJoinGroupDialog(id: number, key: string) {
   const instance = createDiscreteApi(['dialog'], {
     configProviderProps: {
       theme: theme.value
@@ -49,11 +49,13 @@ function showJoinGroupDialog(id: number, key: string) {
     }, 1000);
   }
 
+  const image = await import(`./resources/images/${id}.png?url`)
+
   instance.dialog.create({
     showIcon: false,
     title: '群号: ' + id,
     content: () => h(NImage, {
-      src: '/public/' + id + '.png',
+      src: image.default,
       imgProps: {
         class: 'w-full'
       }
